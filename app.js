@@ -1,43 +1,86 @@
-const http         = require('http'),
-      fs           = require('fs'),
-      path         = require('path'),
-      contentTypes = require('./utils/content-types'),
-      sysInfo      = require('./utils/sys-info'),
-      env          = process.env;
+//my components
+const config = require('./src/_config.js');
+const feed = require('./src/feed.js');
+const storage = require('./src/storage.js');
 
-let server = http.createServer(function (req, res) {
-  let url = req.url;
-  if (url == '/') {
-    url += 'index.html';
-  }
+//Express
+const express = require('express');
+const app = express();
 
-  // IMPORTANT: Your application HAS to respond to GET /health with status 200
-  //            for OpenShift health monitoring
+//Lodash
+const _ = require('lodash-node');;
 
-  if (url == '/health') {
-    res.writeHead(200);
-    res.end();
-  } else if (url.indexOf('/info/') == 0) {
-    res.setHeader('Content-Type', 'application/json');
-    res.setHeader('Cache-Control', 'no-cache, no-store');
-    res.end(JSON.stringify(sysInfo[url.slice(6)]()));
-  } else {
-    fs.readFile('./static' + url, function (err, data) {
-      if (err) {
-        res.writeHead(404);
-        res.end();
-      } else {
-        let ext = path.extname(url).slice(1);
-        res.setHeader('Content-Type', contentTypes[ext]);
-        if (ext === 'html') {
-          res.setHeader('Cache-Control', 'no-cache, no-store');
-        }
-        res.end(data);
-      }
+//json output
+app.get('/json', function (req, res) {
+    storage.loadItems(function (items) {
+        res.type('application/json');
+        res.send(JSON.stringify(items));
     });
-  }
 });
 
-server.listen(env.NODE_PORT || 3000, env.NODE_IP || 'localhost', function () {
+//RSS output
+app.get('/rss', function (req, res) {
+    res.send('json');
+});
+
+//js snippet code
+app.get('/snippet.js', function (req, res) {
+    res.sendfile(__dirname + '/snippet.js');
+});
+
+//status page
+app.get('/', function (req, res) {
+    //Webpages
+    const www_page = require('./src/www/_page.js');
+    const www_nav = require('./src/www/nav.js');
+    const www_state = require('./src/www/state.js');
+    const www_config = require('./src/www/config.js');
+    const www_items = require('./src/www/items.js');
+
+    var active = req.query.active || "";
+
+    var content = _.template(www_nav.template)({ active: active })
+
+    if (active === "config") {
+        content += _.template(www_config.template)({ active: active })
+    } else if (active === "items") {
+        content += _.template(www_items.template)({ active: active })
+    } else {
+        content += _.template(www_state.template)({ active: active })
+    }
+
+    res.send(_.template(www_page.template)({ content: content }));
+});
+
+//404
+app.get('*', function (req, res) {
+    res.send('404 - not found', 404);
+});
+
+
+//
+// konfigurace weboveho serveru
+//
+var addr = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+
+//
+// Start weboveho serveru
+//
+app.listen(port, addr, function() {
+  console.log('The app listening at http://%s:%s', addr, port);
   console.log(`Application worker ${process.pid} started...`);
 });
+
+// app.listen(env.NODE_PORT || 3000, env.NODE_IP || 'localhost', function () {
+//   console.log(`Application worker ${process.pid} started...`);
+// });
+
+// feed.fetch(function (item) {
+//     storage.saveItem({
+//         title: item.title,
+//         date: item.date,
+//         description: item.description,
+//         link: item.link
+//     })
+// });
