@@ -89,7 +89,7 @@ exports.loadItems = function (callback, count, filter) {
 
         for (var i = 0; i < files.length && items.length < count; i++) {
             var file = files[i];
-            var item = JSON.parse(fs.readFileSync("content/" + file, "utf8"));
+            var item = JSON.parse(fs.readFileSync(folder + file, "utf8"));
 
             if (!filter || itemMatchFilter(item, filter)) {
                 items.push(item)
