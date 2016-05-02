@@ -10,7 +10,7 @@ var req = request(config.feedUrl)
 var feedparser = new FeedParser();
 
 // create a stdout and file logger
-var log = require('simple-node-logger').createSimpleLogger('log-rss.log');
+var log = require('simple-node-logger').createSimpleLogger(); //'log-rss.log'
 
 /**
  * Fetch the feed, parse it and return item by item 
