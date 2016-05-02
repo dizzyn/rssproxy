@@ -7,7 +7,7 @@ const config = require('./_config.js');
 const fs = require('fs');
 
 // create a stdout and file logger
-var log = require('simple-node-logger').createSimpleLogger('log-storage.log');
+var log = require('simple-node-logger').createSimpleLogger(); //'log-storage.log'
 
 
 /**
