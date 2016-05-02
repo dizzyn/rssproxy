@@ -75,7 +75,9 @@ var itemMatchFilter = function (item, filter) {
 exports.loadItems = function (callback, count, filter) {
     count = count || 20;
 
-    fs.readdir("content/", function (error, files) {
+    var folder = (process.env.OPENSHIFT_DATA_DIR || "./") + "/content/";
+
+    fs.readdir(folder, function (error, files) {
 
         if (error) {
             console.log(error)
