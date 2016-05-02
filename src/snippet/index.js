@@ -11,6 +11,8 @@ document.write(`<style>
 document.write("<div class='rss-snippet'></div>");
 
 ReactDOM.render(
-    <div>Hello, world!.<List/></div>,
+    <div>    
+        <List/>
+    </div>,
     document.getElementsByClassName("rss-snippet")[0]
 );

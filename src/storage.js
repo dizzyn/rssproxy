@@ -41,23 +41,53 @@ exports.saveItem = function (item) {
 }
 
 /**
+ * Compare item text contents with the filter
+ * filter = Siring separed by ","  
+ */
+var itemMatchFilter = function (item, filter) {
+
+    var matchStrWithArray = function (str, words) {
+        var notFound = false;
+        for (var i = 0; i < words.length; i++) {
+
+            if (str.toLowerCase().indexOf(words[i]) === -1) {
+                notFound = true;
+                break;
+            }
+        }
+        return !notFound;
+    }
+
+    var words = filter.trim().toLowerCase().split(",");
+        
+    return matchStrWithArray(item.title, words) || matchStrWithArray(item.description, words);
+}
+
+/**
  * Load items 
  */
-exports.loadItems = function (callback) {
+exports.loadItems = function (callback, count, filter) {
+    count = count || 20;
 
     fs.readdir("content/", function (error, files) {
-        
+
         if (error) {
             console.log(error)
             log.error('Read ERROR:', error, ' / ', new Date().toJSON());
         }
 
-        var items = files.sort().map(function (item, id) {
-            return JSON.parse(fs.readFileSync("content/" + item, "utf8"))
-        });
+        files = files.sort();
+        var items = [];
+
+        for (var i = 0; i < files.length && items.length < count; i++) {
+            var file = files[i];
+            var item = JSON.parse(fs.readFileSync("content/" + file, "utf8"));
+
+            if (!filter || itemMatchFilter(item, filter)) {
+                items.push(item)
+            }
+        };
 
         callback(items);
-
     });
-
 }

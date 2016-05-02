@@ -1,13 +1,35 @@
 exports.template = `
-<h4>Consfig</h4>
+<!-- div>
+    <h4>Konfigurace</h4>
+    <label>Filtruj slova: (odděl čárkou)<input id="filter"/></label><br/>
+    <label>Počet: (odděl čárkou)<input id="count"/></label><br/>
+</div -->
 
-<script
- type="text/javascript"
- src="http://localhost:8080/snippet.js"></script>
+<div>
+    <h4>Vlož kód do stránky:</h4>
+    <code>
+        &lt;script><br/>
+            &nbsp;var maxCount=10;<br/>
+            &nbsp;var filter=dominikánská;<br/>
+        &lt;/script><br/><br/>
+        
+        &lt;script
+        type="text/javascript"
+        src="http://rssproxy-prostor.rhcloud.com/snippet.js">&lt;/script>
 
-<!-- script
- type="text/javascript"
- src="http://output78.rssinclude.com/output?type=js&amp;id=1073696&amp;hash=98ee7b7f82ca4782818506937f2d58ab"></script -->
+    </code>
+</div>
+
+<div>
+    <h4>Náhled:</h4>
+    <script type="text/javascript">
+        var maxCount = 10;
+        var filter = "dominikánská";    
+    </script>
+    <script
+        type="text/javascript"
+        src="http://rssproxy-prostor.rhcloud.com/snippet.js"></script>
+</div>
  
 `;
 

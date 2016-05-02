@@ -5,7 +5,9 @@
   "private": true,
   "main": "start.js",
   "scripts": {
-    "start": "node --use_strict start.js"
+    "start": "node --use_strict start.js",
+    "devserver": "webpack-dev-server --inline",
+    "build": "webpack"
   },
   "author": "Tomas Randus",
   "license": "ISC",
