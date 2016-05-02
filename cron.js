@@ -1,3 +1,5 @@
+//const path = require('path')
+
 //my components
 const config = require('./src/_config.js');
 const feed = require('./src/feed.js');

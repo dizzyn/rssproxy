@@ -1,0 +1,1 @@
+C:\Users\t\Projects\rssproxy>rhc ssh rssproxy --ssh c:\Users\t\AppData\Local\Programs\Git\usr\bin\ssh.exe

@@ -1,6 +1,7 @@
 /**
  * This module handles items stored 
  */
+//console.log("aaaaa", __dirname)
 
 const config = require('./_config.js');
 const fs = require('fs');
@@ -31,7 +32,12 @@ exports.saveItem = function (item) {
 
     item.stored = new Date();
 
-    fs.writeFile("content/" + dateToTimestamp(item.date) + ".json", JSON.stringify(item), 'utf8', (error) => {
+    var folder = (process.env.OPENSHIFT_DATA_DIR || "./") + "/content/"
+    if (!fs.existsSync(folder)) {
+        fs.mkdirSync(folder);
+    }
+
+    fs.writeFile(folder + "/" + dateToTimestamp(item.date) + ".json", JSON.stringify(item), 'utf8', (error) => {
 
         if (error) {
             console.log(error)
@@ -59,7 +65,7 @@ var itemMatchFilter = function (item, filter) {
     }
 
     var words = filter.trim().toLowerCase().split(",");
-        
+
     return matchStrWithArray(item.title, words) || matchStrWithArray(item.description, words);
 }
 
