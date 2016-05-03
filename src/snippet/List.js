@@ -60,12 +60,16 @@ export default class List extends React.Component {
 
     render() {
 
+        var columnCount = this.props.columnCount;
+
+        console.log(columnCount)
+
         if (!this.state || !this.state.items) {
             return (
                 <div></div>
             );
         } else {
-            var itemComps = [];
+            var cols = [];
 
             for (var i = 0; i < this.state.items.length; i++) {
                 const item = this.state.items[i];
@@ -73,13 +77,26 @@ export default class List extends React.Component {
                 item.text = this.parseRSSDesc(item.description).text;
                 item.img = this.parseRSSDesc(item.description).img;
 
-                itemComps.push(<Item key={"x" + i} item={item}/>);
+                if (!cols[i % columnCount]) {
+                  cols[i % columnCount] = [];
+                }
+
+                cols[i % columnCount].push(<Item key={"x" + i} item={item}/>);
+            }
+
+            var colSet = [];
+            for (var i = 0; i < cols.length; i++) {
+                colSet.push(
+                  <ul key={"y" + i} style={{ margin: 0, padding: 0, float: "left", maxWidth: "500px", width: (100 / columnCount) + "%" }}>
+                      {cols[i]}
+                  </ul>
+                )
             }
 
             return (
-                <ul className="rssItems" style={{ margin: 0, padding: 0, maxWidth: "500px" }}>
-                    {itemComps}
-                </ul>
+                <div className="rssItems" style={{ margin: 0, padding: 0, maxWidth: "1000px" }}>
+                    {colSet}
+                </div>
             );
         }
     }

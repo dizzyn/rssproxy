@@ -11,8 +11,8 @@ document.write(`<style>
 document.write("<div class='rss-snippet'></div>");
 
 ReactDOM.render(
-    <div>    
-        <List/>
+    <div>
+        <List columnCount={columnCount || 2}/>
     </div>,
     document.getElementsByClassName("rss-snippet")[0]
 );

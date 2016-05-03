@@ -25,10 +25,11 @@ exports.template = `
     <script type="text/javascript">
         var maxCount = 10;
         var filter = "dominikánská";
+        var columnCount = 2;
     </script>
     <script
         type="text/javascript"
-        src="http://rssproxy-prostor.rhcloud.com/snippet.js"></script>
+        src="http://rssproxy-prostor.rhcloud.com/snippet.js"></script> <!-- http://localhost:8080/snippet.js -->
 </div>
 
 `;
