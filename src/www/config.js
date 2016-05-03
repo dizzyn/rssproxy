@@ -10,9 +10,9 @@ exports.template = `
     <code>
         &lt;script><br/>
             &nbsp;var maxCount=10;<br/>
-            &nbsp;var filter=dominikánská;<br/>
+            &nbsp;var filter="dominikánská";<br/>
         &lt;/script><br/><br/>
-        
+
         &lt;script
         type="text/javascript"
         src="http://rssproxy-prostor.rhcloud.com/snippet.js">&lt;/script>
@@ -24,13 +24,11 @@ exports.template = `
     <h4>Náhled:</h4>
     <script type="text/javascript">
         var maxCount = 10;
-        var filter = "dominikánská";    
+        var filter = "dominikánská";
     </script>
     <script
         type="text/javascript"
         src="http://rssproxy-prostor.rhcloud.com/snippet.js"></script>
 </div>
- 
+
 `;
-
-
