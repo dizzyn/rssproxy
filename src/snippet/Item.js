@@ -10,7 +10,7 @@ export default class Item extends React.Component {
         var dateStr = date.getDate() + "." + date.getMonth() + " " + date.getFullYear();
 
         return (<li style={{ marginTop: "15px", listStyleType: "none", padding: 0 }}>
-            <img src={this.props.item.img} style={{ float: "left", width: "50%" }}/>
+            <a href={this.props.item.link}><img src={this.props.item.img} style={{ float: "left", width: "50%" }}/></a>
             <div style={{ float: "right", width: "50%" }}>
                 <div style={{ paddingLeft: "15px" }}>
                     <a href={this.props.item.link}>{this.props.item.title}</a>

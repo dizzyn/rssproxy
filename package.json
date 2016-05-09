@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node --use_strict start.js",
     "devserver": "webpack-dev-server --inline",
-    "build": "NODE_ENV=production webpack --optimize-minimize"
+    "build": "webpack --optimize-minimize"
   },
   "dependencies": {
     "express": "^4.13.4",
