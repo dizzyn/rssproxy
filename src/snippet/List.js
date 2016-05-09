@@ -29,13 +29,13 @@ export default class List extends React.Component {
 
         var attrs = [];
 
-        var maxCount = maxCount || 20;
-        if (maxCount) {
-            attrs.push("maxcount=" + encodeURIComponent(maxCount));
+        if (typeof maxCount === 'undefined') {
+          var maxCount = 20;
         }
+        attrs.push("maxcount=" + encodeURIComponent(maxCount));
 
-        if (filter) {
-            attrs.push("filter=" + encodeURIComponent(filter));
+        if (typeof filter !== 'undefined') {
+          attrs.push("filter=" + encodeURIComponent(filter));
         }
 
         for (var i = 0; i < attrs.length; i++) {

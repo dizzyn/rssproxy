@@ -9,7 +9,7 @@ exports.template = `
     <a href="?words=řecko">řecko</a>
     ...<br/><br/>
     <form>
-      <label>Vlastni slovo: (vice slov oddel carkou) <input name="words" id="filter"/> </label> <input type="submit" value="odeslat"\><br/>
+      <label>Vlastni slovo: (vice slov oddel carkou) <input name="words"/> </label> <input type="submit" value="odeslat"\><br/>
     </form>
 </div>
 
