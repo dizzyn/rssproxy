@@ -15,6 +15,8 @@ const _ = require('lodash-node');;
 app.get('/json', function (req, res) {
     storage.loadItems(function (items) {
         res.setHeader('Content-Type', 'application/json; charset=utf-8');
+        res.setHeader("Access-Control-Allow-Origin", "*");
+        res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
         res.end(JSON.stringify(items));
     }, req.query.maxcount || 20, req.query.filter);
 });
