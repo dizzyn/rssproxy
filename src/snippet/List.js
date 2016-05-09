@@ -32,7 +32,7 @@ export default class List extends React.Component {
         if (typeof maxCount === 'undefined') {
           var maxCount = 20;
         }
-        attrs.push("maxcount=" + encodeURIComponent(maxCount));
+        attrs.push("count=" + encodeURIComponent(maxCount));
 
         if (typeof filter !== 'undefined') {
           attrs.push("filter=" + encodeURIComponent(filter));

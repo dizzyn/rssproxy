@@ -42,7 +42,8 @@ exports.fetch = function(callback) {
         var item;
 
         while (item = stream.read()) {
-            callback(item)
+            console.log(item);
+            callback(item);
         };
     });
 }
