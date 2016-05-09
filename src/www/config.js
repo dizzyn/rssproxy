@@ -1,35 +1,49 @@
 exports.template = `
-<!-- div>
-    <h4>Konfigurace</h4>
-    <label>Filtruj slova: (odděl čárkou)<input id="filter"/></label><br/>
-    <label>Počet: (odděl čárkou)<input id="count"/></label><br/>
-</div -->
+
+<div>
+    <h4>Filtrace</h4>
+    Testovací řetězce: <a href="http://127.0.0.1:8000/?words=mauricius">mauricius</a>,
+    <a href="http://127.0.0.1:8000/?words=maledivy">maledivy</a>,
+    <a href="http://127.0.0.1:8000/?words=seychely">seychely</a>,
+    <a href="http://127.0.0.1:8000/?words=mauricius,all inclusive">mauricius,all inclusive</a>,
+    <a href="http://127.0.0.1:8000/?words=řecko">řecko</a>
+    ...<br/><br/>
+    <form>
+      <label>Vlastní slovo: (více slov odděl čárkou) <input name="words" id="filter"/> </label> <input type="submit" value="odeslat"\><br/>
+    </form>
+</div>
 
 <div>
     <h4>Vlož kód do stránky:</h4>
     <code>
         &lt;script><br/>
-            &nbsp;var maxCount=10;<br/>
-            &nbsp;var filter="dominikánská";<br/>
+            &nbsp;var filter="<%=words%>";<br/>
         &lt;/script><br/><br/>
 
         &lt;script
         type="text/javascript"
-        src="http://rssproxy-prostor.rhcloud.com/snippet.js">&lt;/script>
+        src="http://snippet.svatba-v-zahranici.eu/snippet.js">&lt;/script>
 
+    </code>
+</div>
+
+<div>
+    <h4>Další možná konfigurace</h4>
+    <code>
+    &nbsp;var maxCount=10; //Počet zobrazených položek (default 20)<br/>
+    &nbsp;var columns=2; //Počet sloupců (default 2)<br/>
     </code>
 </div>
 
 <div>
     <h4>Náhled:</h4>
     <script type="text/javascript">
-        var maxCount = 10;
-        var filter = "dominikánská";
-        var columnCount = 2;
+        var filter = "<%=words%>";
     </script>
     <script
         type="text/javascript"
-        src="http://rssproxy-prostor.rhcloud.com/snippet.js"></script> <!-- http://localhost:8080/snippet.js -->
+        src="<%=(NODE_ENV=="production"?"http://snippet.svatba-v-zahranici.eu/snippet.js":"http://localhost:8080/snippet.js")%>"></script>
 </div>
+
 
 `;

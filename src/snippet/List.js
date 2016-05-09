@@ -5,7 +5,6 @@ import Item from './Item'
 export default class List extends React.Component {
 
     parseRSSDesc(description) {
-
         var imgSrc = description.substring(description.indexOf("src=") + 5);
         imgSrc = imgSrc.substring(0, imgSrc.indexOf("\""));
 
@@ -30,6 +29,7 @@ export default class List extends React.Component {
 
         var attrs = [];
 
+        var maxCount = maxCount || 20;
         if (maxCount) {
             attrs.push("maxcount=" + encodeURIComponent(maxCount));
         }
@@ -60,9 +60,9 @@ export default class List extends React.Component {
 
     render() {
 
-        var columnCount = this.props.columnCount;
+        var columnCount = this.props.columnCount || 20;
 
-        console.log(columnCount)
+      //  console.log(columnCount)
 
         if (!this.state || !this.state.items) {
             return (

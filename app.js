@@ -12,7 +12,7 @@ const app = express();
 const _ = require('lodash-node');;
 
 //json output
-app.get('/json', function (req, res) {        
+app.get('/json', function (req, res) {
     storage.loadItems(function (items) {
         res.setHeader('Content-Type', 'application/json; charset=utf-8');
         res.end(JSON.stringify(items));
@@ -45,7 +45,7 @@ app.get('/', function (req, res) {
     var content = "";// _.template(www_nav.template)({ active: active })
 
     // if (active === "config") {
-        content += _.template(www_config.template)({ active: active })
+        content += _.template(www_config.template)({ active: active, words: req.query.words || "", NODE_ENV: process.env.NODE_ENV })
     // } else if (active === "items") {
     //     content += _.template(www_items.template)({ active: active })
     // } else {
