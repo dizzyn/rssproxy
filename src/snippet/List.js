@@ -48,7 +48,7 @@ export default class List extends React.Component {
 
     componentWillMount() {
 
-        this.httpGet('json', (value) => {
+        this.httpGet('http://snippet.svatba-v-zahranici.eu/json', (value) => {
 
             this.setState({
                 items: JSON.parse(value)

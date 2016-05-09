@@ -1,5 +1,5 @@
 /**
- * This module fetches the feed and save it into the files 
+ * This module fetches the feed and save it into the files
  */
 
 const config = require('./_config.js');
@@ -13,10 +13,10 @@ var feedparser = new FeedParser();
 var log = require('simple-node-logger').createSimpleLogger(); //'log-rss.log'
 
 /**
- * Fetch the feed, parse it and return item by item 
+ * Fetch the feed, parse it and return item by item
  */
 exports.fetch = function(callback) {
-    
+
     req.on('error', function(error) {
         // handle any request errors
         log.error('Request ERROR:', error, ' / ', new Date().toJSON());
