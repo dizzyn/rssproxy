@@ -14,14 +14,20 @@ const _ = require('lodash-node');;
 app.get('/json', function (req, res) {
     storage.loadItems(function (items) {
         res.type('application/json');
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.header('Access-Control-Allow-Headers', 'Content-Type');
         res.send(JSON.stringify(items));
     });
 });
 
-//RSS output
-app.get('/rss', function (req, res) {
-    res.send('json');
-});
+// //RSS output
+// app.get('/rss', function (req, res) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//     res.header('Access-Control-Allow-Headers', 'Content-Type');
+//     res.send('json');
+// });
 
 //js snippet code
 app.get('/snippet.js', function (req, res) {
