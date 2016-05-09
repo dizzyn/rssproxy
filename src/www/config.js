@@ -6,7 +6,7 @@ exports.template = `
     <a href="?words=maledivy">maledivy</a>,
     <a href="?words=seychely">seychely</a>,
     <a href="?words=mauricius,all inclusive">mauricius,all inclusive</a>,
-    <a href="?words=recko">recko</a>
+    <a href="?words=řecko">řecko</a>
     ...<br/><br/>
     <form>
       <label>Vlastni slovo: (vice slov oddel carkou) <input name="words" id="filter"/> </label> <input type="submit" value="odeslat"\><br/>
