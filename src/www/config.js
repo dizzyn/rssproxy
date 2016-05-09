@@ -2,19 +2,19 @@ exports.template = `
 
 <div>
     <h4>Filtrace</h4>
-    TestovacÃ­ Å™etÄ›zce: <a href="http://127.0.0.1:8000/?words=mauricius">mauricius</a>,
+    Testovací retezce: <a href="http://127.0.0.1:8000/?words=mauricius">mauricius</a>,
     <a href="http://127.0.0.1:8000/?words=maledivy">maledivy</a>,
     <a href="http://127.0.0.1:8000/?words=seychely">seychely</a>,
     <a href="http://127.0.0.1:8000/?words=mauricius,all inclusive">mauricius,all inclusive</a>,
-    <a href="http://127.0.0.1:8000/?words=Å™ecko">Å™ecko</a>
+    <a href="http://127.0.0.1:8000/?words=recko">recko</a>
     ...<br/><br/>
     <form>
-      <label>VlastnÃ­ slovo: (vÃ­ce slov oddÄ›l ÄÃ¡rkou) <input name="words" id="filter"/> </label> <input type="submit" value="odeslat"\><br/>
+      <label>Vlastní slovo: (více slov oddel cárkou) <input name="words" id="filter"/> </label> <input type="submit" value="odeslat"\><br/>
     </form>
 </div>
 
 <div>
-    <h4>VloÅ¾ kÃ³d do strÃ¡nky:</h4>
+    <h4>Vlo kód do stránky:</h4>
     <code>
         &lt;script><br/>
             &nbsp;var filter="<%=words%>";<br/>
@@ -28,15 +28,15 @@ exports.template = `
 </div>
 
 <div>
-    <h4>DalÅ¡Ã­ moÅ¾nÃ¡ konfigurace</h4>
+    <h4>Další moná konfigurace</h4>
     <code>
-    &nbsp;var maxCount=10; //PoÄet zobrazenÃ½ch poloÅ¾ek (default 20)<br/>
-    &nbsp;var columns=2; //PoÄet sloupcÅ¯ (default 2)<br/>
+    &nbsp;var maxCount=10; //Pocet zobrazenıch poloek (default 20)<br/>
+    &nbsp;var columns=2; //Pocet sloupcu (default 2)<br/>
     </code>
 </div>
 
 <div>
-    <h4>NÃ¡hled:</h4>
+    <h4>Náhled:</h4>
     <script type="text/javascript">
         var filter = "<%=words%>";
     </script>
