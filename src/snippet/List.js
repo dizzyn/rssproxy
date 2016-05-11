@@ -29,13 +29,12 @@ export default class List extends React.Component {
 
         var attrs = [];
 
-        if (typeof maxCount === 'undefined') {
-          var maxCount = 20;
+        if (this.props.maxCount) {
+          attrs.push("count=" + this.props.maxCount);
         }
-        attrs.push("maxcount=" + encodeURIComponent(maxCount));
 
-        if (typeof filter !== 'undefined') {
-          attrs.push("filter=" + encodeURIComponent(filter));
+        if (this.props.filter) {
+          attrs.push("filter=" + encodeURIComponent(this.props.filter));
         }
 
         for (var i = 0; i < attrs.length; i++) {
@@ -59,10 +58,7 @@ export default class List extends React.Component {
     }
 
     render() {
-
-        var columnCount = this.props.columnCount || 20;
-
-      //  console.log(columnCount)
+        var columnCount = this.props.columnCount;
 
         if (!this.state || !this.state.items) {
             return (

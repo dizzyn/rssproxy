@@ -17,7 +17,8 @@ export default class Item extends React.Component {
                     <p style={{
                         fontFamily: "Arial, Helvetica, sans-serif",
                         fontSize: "11px",
-                        color: "#000000"
+                        color: "#000000",
+                        marginRight: "6px"
                     }} dangerouslySetInnerHTML={{__html: this.props.item.text}}/>
                     <p style={{
                         fontFamily: "Arial, Helvetica, sans-serif",
@@ -31,7 +32,7 @@ export default class Item extends React.Component {
                                 border: "none",
                                 overflow: "hidden",
                                 width: "100%",
-                                height: "21px"
+                                height: "21px",
                             }}
                             width="450"
                             height="80"

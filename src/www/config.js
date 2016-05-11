@@ -39,6 +39,8 @@ exports.template = `
     <h4>Nahled:</h4>
     <script type="text/javascript">
         var filter = "<%=words%>";
+//        var columnCount = 1;
+//        var maxCount = 2;
     </script>
     <script
         type="text/javascript"
