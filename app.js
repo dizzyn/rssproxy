@@ -18,7 +18,7 @@ app.get('/json', function (req, res) {
         res.setHeader("Access-Control-Allow-Origin", "*");
         res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
         res.end(JSON.stringify(items));
-    }, req.query.maxcount || 20, req.query.filter);
+    }, req.query.count, req.query.filter);
 });
 
 //js snippet code
@@ -59,7 +59,7 @@ app.get('/', function (req, res) {
 
 //404
 app.get('*', function (req, res) {
-    res.send('404 - not found', 404);
+    res.send(404).send('404 - not found');
 });
 
 //
