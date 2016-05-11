@@ -22,7 +22,7 @@ document.write("<div class='rss-snippet'></div>");
 //
 ReactDOM.render(
     <div>
-        <List columnCount={window['columnCount'] || 2} maxCount={window['maxCount'] || 2} filter={window['filter']}/>
+        <List columnCount={window['columnCount'] || 2} maxCount={window['maxCount'] || 20} filter={window['filter']}/>
     </div>,
     document.getElementsByClassName("rss-snippet")[0]
 );
