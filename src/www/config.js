@@ -31,7 +31,7 @@ exports.template = `
     <h4>Dalsi mozne konfigurace</h4>
     <code>
     &nbsp;var maxCount=10; //Pocet zobrazenych polozek (default 20)<br/>
-    &nbsp;var columns=2; //Pocet sloupcu (default 2)<br/>
+    &nbsp;var columnCount=3; //Pocet sloupcu (default 2)<br/>
     </code>
 </div>
 
@@ -39,8 +39,8 @@ exports.template = `
     <h4>Nahled:</h4>
     <script type="text/javascript">
         var filter = "<%=words%>";
-//        var columnCount = 1;
-//        var maxCount = 2;
+        var columnCount = 1;
+        var maxCount = 20;
     </script>
     <script
         type="text/javascript"
